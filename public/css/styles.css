@@ -1,0 +1,41 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+
+body{
+    background: rgb(56, 51, 51);
+}
+
+ .search-bar{
+    position: absolute;
+    top: 30%;
+    left: 30%;
+} 
+
+input{
+    border: 5px solid rgb(41, 175, 236);
+     /* border-radius: 50px;  */
+    padding: 0px 15px; 
+    height: 55px;
+    width: 600px;
+}
+
+#dis1-text{
+    
+    margin-top: 50px;
+    color:rgb(41, 175, 236);
+    font-size: 20px;
+}
+
+
+
+#navbar-custom{
+background-color: red;
+}
+
+placeholder{
+color: red;
+
+} 
