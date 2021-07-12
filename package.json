@@ -1,0 +1,19 @@
+{
+  "name": "crypto-wiki",
+  "version": "1.0.0",
+  "description": "Just another crypto-app, with focus on the tech, rather than the price.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pynezz/crypto-wiki.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pynezz/crypto-wiki/issues"
+  },
+  "homepage": "https://github.com/pynezz/crypto-wiki#readme"
+}
