@@ -1,6 +1,6 @@
 require('dotenv').config();
 
 
-module.exports = RunApi = () => {
+const RunApi = () => {
     console.log(process.env.API_KEY);
 }
