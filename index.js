@@ -15,9 +15,22 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/api', (req, res) => {
-    Api();
-    res.send('<p>Api</p>');
+
+
+
+// cryptocurrency/listings/latest
+app.get('/api?*', async (req, res) => {
+    let url = req.originalUrl.substring(4, req.originalUrl.length);
+    console.log('url: ', url)
+    result = await Api(`${url}`);
+    res.setHeader('Content-Type', 'application/json');
+    console.log(result.title);
+    console.log('Result: ', result)
+    res.send(result);
+    //console.log(res.json());
+    res.end();
+
+
 })
 
 http.listen(PORT, () => {
