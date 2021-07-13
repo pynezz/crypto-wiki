@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 })
 
 
-
+app.get('/data', require('./public/js/api'));
 
 // cryptocurrency/listings/latest
 app.get('/api?*', async (req, res) => {

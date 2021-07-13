@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('express');
 const { response } = require('express');
 const rp = require('request-promise-native');
 
@@ -29,16 +30,15 @@ const requestOptionsTest = {
 }
 
 
-module.exports = RunApi = async (urlParams) => {
-    console.log(`Sending request to ${process.env.JSON_API}${urlParams}`);
-    await rp(`${process.env.JSON_API}${urlParams}`, requestOptionsTest).then( response => {
+module.exports = RunApi = async (req, res) => {
+    let data;
+    console.log(`Sending request to ${process.env.JSON_API}${'/todos/1'}`);
+    await rp(`${process.env.JSON_API}${'/todos/1'}`, requestOptionsTest).then( response => {
+        data = response;
         console.log('RunAPI response: ', response);
-        return response;
-        
     }).catch((err) => {
         console.log('Error: ', err.message);
         return err.message;
     });
-    console.log('GETS DOWN HERE');
-    return response;
+    await res.send(data);
 }

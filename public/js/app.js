@@ -7,6 +7,9 @@ const request = new Request({
     method: 'GET'
 });
 
+function GetData() {
+    fetch('/data');
+}
 
 function Search() {
 
