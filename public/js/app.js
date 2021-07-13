@@ -7,8 +7,14 @@ const request = new Request({
     method: 'GET'
 });
 
-function GetData() {
-    fetch('/data');
+async function GetData() {
+    await fetch('/all').then(res => res).then(data => console.log(data)).catch((err) => {if (err) console.log(err)});
+
+    // let data = [];
+    // await fetch('/data')
+    //     .then(response => {
+    //         data = response;
+    //     }).then(json => json).catch((err) => console.log(err.message))
 }
 
 function Search() {
