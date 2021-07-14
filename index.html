@@ -1,25 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./css/styles.css" >
-  </head>
-  <body>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">
+                CoinWiki
+            </h1>
+            <div class="search-container">
+                <input type="text" class="search" id="search-text" placeholder="Search...">
+                <button class="search-btn" onclick="SearchToken()">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <div class="sidebar">
+            <h2 class="subheading">Top 5 Coins</h2>
+            <ul>
+                <li>Coin One</li>
+                <li>Coin Two</li>
+                <li>Coin Three</li>
+                <li>Coin Four</li>
+                <li>Coin Five</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h2 class="subheading">Coin details</h2>
+            <div id="dis1-text">
 
-    <nav class="navbar navbar-light bg-light" id="navbar-custom">
-      <span class="navbar-brand h2"> Coin Market Cap </span>
-    </nav>
-
-    <div class="search-bar">
-      <input id="search-text" type="text" value="" placeholder="Search for any token">
-        <a class="btn btn-success" href="#" onclick="SearchToken()">Search</a>
-      <div id="dis1-text">
-      </div>
+            </div>
+        </div>
+        <div class="footer">
+            Footer
+        </div>
     </div>
-
     <script src="./js/app.js"></script>
-  </body>
+</body>
 </html>
