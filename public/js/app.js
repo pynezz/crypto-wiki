@@ -17,6 +17,21 @@ async function GetData() {
     //     }).then(json => json).catch((err) => console.log(err.message))
 }
 
+async function SearchToken() {
+    let input = document.getElementById("search-text").value;
+    var url = new URL('http://192.168.0.5:3000/search');
+    var params = {id: input};
+    url.search = new URLSearchParams(params);
+    let request = {
+        method: 'GET',
+        params: input
+        }
+    console.log(url.params);
+    await fetch(url).then((data) =>  {
+        console.log('Data: ', data);
+    }).then(complete => console.log('Complete: ', complete)).catch((err) => console.log('Error app.js ', err));
+}
+
 function Search() {
 
     let result = document.getElementById("dis1-text").innerHTML;
