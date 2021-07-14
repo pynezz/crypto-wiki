@@ -1,20 +1,19 @@
 const express = require('express');
 const app = express();
-const http = require('http').createServer(app);
 const PORT = process.env.PORT || 3000;
 
-const reader = require('fs');
-
+//TODO: Search suggestion functionality 
+// const reader = require('fs');
+// let tokens = [];
+// const AllTokens = () => {
+    //     reader.readFile('./public/json/coingecko_all_coins.json', (err, data) => {
+        //         if (err) console.log(err);
+        //         tokens = JSON.parse(data); 
+        //     });
+        // }
+        // AllTokens();
+        
 const Api = require('./public/js/api');
-
-let tokens = [];
-const AllTokens = () => {
-    reader.readFile('./public/json/coingecko_all_coins.json', (err, data) => {
-        if (err) console.log(err);
-        tokens = JSON.parse(data); 
-    });
-}
-AllTokens();
 
 app.use(express.static('public'));
 
@@ -33,7 +32,7 @@ app.get('/search*', async (req, res) => {
     await res.send(obj);
 }) 
 
-http.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log('Server running at ', PORT);
 });
 

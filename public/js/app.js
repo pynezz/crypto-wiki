@@ -7,26 +7,26 @@ const resultObj = document.getElementById("dis1-text");
 
 let response = {}
 
-async function SearchToken() {
+//No need of async await if using callback
+function SearchToken() {
     resultObj.innerText = "";
     let input = document.getElementById("search-text").value;
 
     let results = {}
 
-    var url = new URL('http://192.168.0.5:3000/search');
+    //Currently using localhost so it runs on everyone's machine
+    //Change the url when deployed
+    var url = new URL('http://localhost:3000/search');
     var params = {id: input};
     url.search = new URLSearchParams(params);
 
-    const data = await fetch(url).then(response => response.json())
+    fetch(url).then(response => response.json())
         .then(complete => {
             console.log('Complete: ', complete.description.en);
             results = complete;
             addObjects(complete);
         })
         .catch((err) => console.log('Error app.js ', err));
-    
-    
-    
 }
 
 function addObjects(object) {
@@ -37,13 +37,14 @@ function addObjects(object) {
 
 } 
 
-async function searchfn(){
-    document.getElementById("dis1-text").innerHTML = "";
-    var searchtext= document.getElementById("search-text").value;
-    console.log(searchtext);
-    document.getElementById("dis1-text").innerHTML += " Hii there, u searched for "+ searchtext;
+//No use right now
+// function searchfn(){
+//     document.getElementById("dis1-text").innerHTML = "";
+//     var searchtext= document.getElementById("search-text").value;
+//     console.log(searchtext);
+//     document.getElementById("dis1-text").innerHTML += " Hii there, u searched for "+ searchtext;
 
-    await fetch('api/todos/1') .then(res => {
-        res.json().then(json => console.log(json));
-    });
-};
+//     fetch('api/todos/1') .then(res => {
+//         res.json().then(json => console.log(json));
+//     });
+// };
