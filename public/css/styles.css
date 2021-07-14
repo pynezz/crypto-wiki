@@ -1,41 +1,78 @@
 *{
+  
     margin: 0px;
     padding: 0px;
-    font-family: sans-serif;
-}
-
-body{
-    background: rgb(56, 51, 51);
-}
-
- .search-bar{
-    position: absolute;
-    top: 30%;
-    left: 30%;
-} 
-
-input{
-    border: 5px solid rgb(41, 175, 236);
-     /* border-radius: 50px;  */
-    padding: 0px 15px; 
-    height: 55px;
-    width: 600px;
-}
-
-#dis1-text{
+  
+  }
+  
+  body{
+  
+  
+      background-color: #1e1e1e;
+  }
+  .logo{
+  display: flex;
+      color: #2AFC98;
+      
+      font-family: 'Courgette', cursive;
+      font-size: 45px;
+      font-stretch:ultra-expanded;
+      
+      align-items: center;
+      padding-left: 45%;
+      /* justify-content:center; */
+      /* background-color: rgb(255, 255, 255); */
+      margin-top: 10%;
+  }
+  
+  
+  .searchbar{
+  display: flex;
+  height: 180px;
+  width: auto;
+   /* background-color: red; */
+   
+   
+   border: 0px;
+   padding: 0px;
+  
+  
+  }
+  
+  input{
+      margin-top: 40px;
+      margin-left: 35%;
+      height: 50px;
+      width: 400px;
+      border-radius: 50px 0px 0px 50px ; 
+      border-right: 0px;
+      border: transparent;
+      
+      
+      padding-left: 50px;
     
-    margin-top: 50px;
-    color:rgb(41, 175, 236);
-    font-size: 20px;
-}
-
-
-
-#navbar-custom{
-background-color: red;
-}
-
-placeholder{
-color: red;
-
-} 
+      background-color: #f2fff9;
+      outline: none;
+      font-family: 'Poppins', sans-serif;
+  
+  }
+  
+  button{
+  
+      height: 50px;
+      width: 50px;
+      margin-top: 40px;
+      border-left: 0px;
+      cursor: pointer;
+      background-color: #f2fff9;
+      border-radius: 0px 50px 50px 0px; 
+      border: transparent;
+      outline: none;
+    
+      
+      
+  
+  
+  }
+  
+  
