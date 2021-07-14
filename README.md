@@ -3,8 +3,13 @@ Just another crypto-app, with focus on the tech, rather than the price.
 
 ## To edit live: 
 
-Nodemon:
-`npm install nodemon`
+Install all dependencies
+`npm install`
 
-Then run liveserver:
-`nodemon index.js`
+Run the server
+`npm start`
+
+## TODO
+1) Top 5 trending coins
+2) Search Suggestion
+3) Random Coin Search

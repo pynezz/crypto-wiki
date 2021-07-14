@@ -1,20 +1,19 @@
 const express = require('express');
 const app = express();
-const http = require('http').createServer(app);
 const PORT = process.env.PORT || 3000;
 
-const reader = require('fs');
-
+//TODO: Search suggestion functionality 
+// const reader = require('fs');
+// let tokens = [];
+// const AllTokens = () => {
+    //     reader.readFile('./public/json/coingecko_all_coins.json', (err, data) => {
+        //         if (err) console.log(err);
+        //         tokens = JSON.parse(data); 
+        //     });
+        // }
+        // AllTokens();
+        
 const Api = require('./public/js/api');
-
-let tokens = [];
-const AllTokens = () => {
-    reader.readFile('./public/json/coingecko_all_coins.json', (err, data) => {
-        if (err) console.log(err);
-        tokens = JSON.parse(data); 
-    });
-}
-AllTokens();
 
 app.use(express.static('public'));
 
@@ -25,15 +24,18 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search*', async (req, res) => {
-    let obj = [];
     console.log('Request params: ', req.query);
-    await Api(req.query.id).then(data => {
-        obj = data;
-    });
-    await res.send(obj);
+    try {
+        const data = await Api(req.query.id)
+        console.log(data);
+        return res.status(200).json(data);
+    } catch(err) {
+        console.log(err);
+        return res.status(500).json({msg: "An error occurred , Please try again later"});
+    }
 }) 
 
-http.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log('Server running at ', PORT);
 });
 
