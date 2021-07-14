@@ -5,36 +5,45 @@
 const resultObj = document.getElementById("dis1-text");
 
 
-let response = {}
+let title = ' ';
 
 async function SearchToken() {
     resultObj.innerText = "";
     let input = document.getElementById("search-text").value;
-
-    let results = {}
+    input = input.toLowerCase();
+    title = '-';
 
     var url = new URL('http://192.168.0.5:3000/search');
     var params = {id: input};
     url.search = new URLSearchParams(params);
 
-    const data = await fetch(url).then(response => response.json())
+    await fetch(url).then(response => response.json())
         .then(complete => {
-            console.log('Complete: ', complete.description.en);
-            results = complete;
+            title = complete.name.toString();
             addObjects(complete);
         })
-        .catch((err) => console.log('Error app.js ', err));
-    
-    
-    
+        .catch((err) => {
+            addObjects('');
+            console.log('Error app.js ', err)
+        });    
 }
 
 function addObjects(object) {
-    response = object;
+    let h3Tag = document.createElement('h3');
     let pTag = document.createElement('p');
-    pTag.innerHTML = object.description.en;
-    resultObj.appendChild(pTag);
+    h3Tag.innerHTML = 'no results...';
+    pTag.innerHTML = '';
 
+
+
+    if (title.length > 1) {
+        var symbol = `${object.symbol}`;
+        pTag.innerHTML = object.description.en;
+        h3Tag.innerHTML = `${title} | ${symbol.toUpperCase()}`;
+    }
+    resultObj.appendChild(h3Tag);
+    resultObj.appendChild(pTag);
+    
 } 
 
 async function searchfn(){
