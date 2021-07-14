@@ -24,12 +24,15 @@ app.get('/', (req, res) => {
 })
 
 app.get('/search*', async (req, res) => {
-    let obj = [];
     console.log('Request params: ', req.query);
-    await Api(req.query.id).then(data => {
-        obj = data;
-    });
-    await res.send(obj);
+    try {
+        const data = await Api(req.query.id)
+        console.log(data);
+        return res.status(200).json(data);
+    } catch(err) {
+        console.log(err);
+        return res.status(500).json({msg: "An error occurred , Please try again later"});
+    }
 }) 
 
 app.listen(PORT, () => {

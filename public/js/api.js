@@ -9,9 +9,11 @@ module.exports = async function SendRequest(tokenId) {
             'Content-Type': 'application/json',
         }
     }
-    const response = await fetch(url, options)
-        .then(response => response.json())
-        .then(data => data).catch((err) => console.log('Error: ', err));
-        
-    return response;
+    try {
+        const response = await fetch(url, options)
+        const data = response.json();
+        return data;
+    } catch (error) {
+        throw Error(error)
+    }
 }
