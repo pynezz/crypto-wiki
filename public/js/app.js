@@ -50,6 +50,9 @@ function addObjects(object) {
     resultObj.appendChild(pTag);
 }
 
+particlesJS.load('particles-js', './assets/particles.json', function() {
+    console.log('callback - particles.js config loaded');
+  });
 
 // function addObjects(object) {
 //     resultObj.innerHTML = object.description.en;
