@@ -135,40 +135,38 @@ header {
 /* Sections */
 
 .section {
-	display: flex;
+	display: block;
 	height: 100vh;
 }
 
 #section-top {
 	background-color: #1e1e1e;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Top part */
 #logo-top {
+    margin-bottom: 1em;
 	display: flex;
 	color: #2afc98;
 	font-family: "Courgette", cursive;
 	font-size: 45px;
-	font-stretch: ultra-expanded;
-	align-items: center;
-	padding-left: 45%;
 	/* justify-content:center; */
 	/* background-color: rgb(255, 255, 255); */
-	margin-top: 10%;
 }
 
 .searchbar {
 	display: flex;
 	height: 180px;
 	width: auto;
-	/* background-color: red; */
 	border: 0px;
 	padding: 0px;
 }
 
 #input-top {
-    margin-top: 40px;
-    margin-left: 35%;
     height: 50px;
     width: 400px;
     border-radius: 50px 0px 0px 50px ; 
@@ -183,8 +181,7 @@ header {
 .search-button{
     height: 50px;
     width: 50px;
-    margin-top: 40px;
-    border-left: 0px;
+
     cursor: pointer;
     background-color: #f2fff9;
     border-radius: 0px 50px 50px 0px; 
