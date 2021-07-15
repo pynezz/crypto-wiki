@@ -3,15 +3,19 @@
 // console.log("hello");
 
 const resultObj = document.getElementById("dis1-text");
+const inputFields = document.getElementsByClassName("search");
+const inputArr = [...inputFields];
 
-let title = ' ';
+let title = '';
 
-//No need of async await if using callback
 function SearchToken() {
-    let input = document.getElementById("search-text").value;
-
+    let input = 'no input';
+    
+    inputArr.forEach(element => {
+        input = element.value.length > 1 ? element.value : input;
+    });
     input = input.toLowerCase();
-    title = '-';
+    title = '';
     //Currently using localhost so it runs on everyone's machine
     //Change the url when deployed
     var url = new URL('http://localhost:3000/search');
@@ -20,12 +24,32 @@ function SearchToken() {
     
     fetch(url).then(response => response.json())
     .then(complete => {
-        console.log('Complete: ', complete.description.en);
         title = complete.name.toString();
         addObjects(complete);
     })
-    .catch((err) => console.log('Error app.js ', err));
+    .catch((err) => {
+        console.log('Error app.js ', err);
+        inputArr.forEach(element => element.value = ""); // Removing the value after search
+        addObjects(title = '', input);                          // Make it display 'no results'
+    });                          
 }
+
+function addObjects(object) {
+    const h3Tag = document.createElement('h3');
+    const pTag = document.createElement('p');
+    h3Tag.innerHTML = 'no results...';
+    pTag.innerHTML = `${object.input}`;
+    inputArr.forEach(element => element.value = "");    // Removing the value after search
+
+    if (title.length > 1) {
+        var symbol = `${object.symbol}`;
+        pTag.innerHTML = object.description.en;
+        h3Tag.innerHTML = `${title} | ${symbol.toUpperCase()}`;
+    }
+    resultObj.appendChild(h3Tag);
+    resultObj.appendChild(pTag);
+}
+
 
 // function addObjects(object) {
 //     resultObj.innerHTML = object.description.en;
@@ -47,25 +71,6 @@ function SearchToken() {
 //             console.log('Error app.js ', err)
 //         });    
 // }
-
-function addObjects(object) {
-    let h3Tag = document.createElement('h3');
-    let pTag = document.createElement('p');
-    h3Tag.innerHTML = 'no results...';
-    pTag.innerHTML = '';
-
-
-
-    if (title.length > 1) {
-        var symbol = `${object.symbol}`;
-        pTag.innerHTML = object.description.en;
-        h3Tag.innerHTML = `${title} | ${symbol.toUpperCase()}`;
-    }
-    resultObj.appendChild(h3Tag);
-    resultObj.appendChild(pTag);
-    
-
-} 
 
 //No use right now
 // function searchfn(){
