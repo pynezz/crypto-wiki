@@ -6,42 +6,69 @@
 
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+    </style>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
+
+<script src="https://kit.fontawesome.com/a127db2792.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="logo">
-                CoinWiki
-            </h1>
-            <div class="search-container">
-                <input type="text" class="search" id="search-text" placeholder="Search...">
-                <button class="search-btn" onclick="SearchToken()">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </button>
-            </div>
-        </header>
-        <div class="sidebar">
-            <h2 class="subheading">Top 5 Coins</h2>
-            <ul>
-                <li>Coin One</li>
-                <li>Coin Two</li>
-                <li>Coin Three</li>
-                <li>Coin Four</li>
-                <li>Coin Five</li>
-            </ul>
-        </div>
-        <div class="content">
-            <h2 class="subheading">Coin details</h2>
-            <div id="dis1-text">
+  <section class="section"  id="section-top">
 
-            </div>
-        </div>
-        <div class="footer">
-            Footer
-        </div>
-    </div>
+    <div class="logo" id="logo-top">
+      coinwiki
+     </div>
+   
+     <div class="searchbar">
+      <input type="text" id="input-top" placeholder="search for a token" value=""> </input>
+        <button class="search-button" onclick="SearchToken()">
+          <i class="fa fa-search"></i>
+        </button>
+     </div>
+  </section>
+
+  <section class="section" id="section-main">
+
+    <div class="container">
+      <header>
+          <h1 class="logo">
+              CoinWiki
+          </h1>
+          <div class="search-container">
+              <input type="text" class="search" id="search-text" placeholder="Search...">
+              <button class="search-btn" onclick="SearchToken()">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+              </button>
+          </div>
+      </header>
+      <div class="sidebar">
+          <h2 class="subheading">Top 5 Coins</h2>
+          <ul>
+              <li>Coin One</li>
+              <li>Coin Two</li>
+              <li>Coin Three</li>
+              <li>Coin Four</li>
+              <li>Coin Five</li>
+          </ul>
+      </div>
+      <div class="content">
+          <h2 class="subheading">Coin details</h2>
+          <div id="dis1-text">
+
+          </div>
+      </div>
+      <div class="footer">
+          Footer
+      </div>
+  </div>
+  </section>
+    
     <script src="./js/app.js"></script>
 
 </body>
