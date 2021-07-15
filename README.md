@@ -17,3 +17,6 @@ Run the server
 
 Color Scheme:
 
+Light green: #2afc98
+Background gray: #1e1e1e
+
