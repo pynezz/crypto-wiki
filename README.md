@@ -13,3 +13,7 @@ Run the server
 1) Top 5 trending coins
 2) Search Suggestion
 3) Random Coin Search
+
+
+Color Scheme:
+
