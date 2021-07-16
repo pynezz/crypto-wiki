@@ -8,6 +8,7 @@
 	--bg-dark: #fafafa;
 	--text-gray: #818181;
 	--text-gray-dark: #686868;
+	--bright-green: #2afc98;
 }
 
 * {
@@ -137,7 +138,8 @@ header {
 .section {
 	z-index: 100;
 	display: block;
-	height: 100vh;
+	min-height: 100vh;
+	min-width: 100%;
 }
 
 #section-top {
@@ -152,10 +154,11 @@ header {
 #logo-top {
     margin-bottom: 1em;
 	display: flex;
-	color: #2afc98;
+	color: var(--bright-green);
 	font-family: "Courgette", cursive;
 	font-size: 45px;
 	z-index: 10;
+	cursor:text;
 	/* justify-content:center; */
 	/* background-color: rgb(255, 255, 255); */
 }
@@ -163,7 +166,7 @@ header {
 .searchbar {
 	display: flex;
 	height: 180px;
-	width: auto;
+	width: inherit;
 	border: 0px;
 	padding: 0px;
 	z-index: 10;
@@ -183,18 +186,23 @@ header {
 }
 
 .search-button{
-    height: 50px;
-    width: 50px;
+	border: none;
+	height: 50px;
+	padding: 18px;
+	margin-left: -25px;
+	border-radius: 50px 50px 50px 50px;
+	background-color: #f2fff9;
+	transition: 200ms ease;
+	z-index: 10;
+	cursor:pointer;
+}
 
-    cursor: pointer;
-    background-color: #f2fff9;
-    border-radius: 0px 50px 50px 0px; 
-    border: transparent;
-    outline: none;
+.search-button:hover {
+	
+	background-color: var(--bright-green);
 }
 
 #particles-js {
-
 	width: 100%;
 	height: 100%;
 	position: absolute;
