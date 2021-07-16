@@ -34,7 +34,7 @@ function getCoinInfo(coinId) {
     //Currently using localhost so it runs on everyone's machine
     //Change the url when deployed
     //var url = new URL('http://localhost:3000/search');    // For local testing
-    var url = `/search?${coinId}`;                           // For Heroku deploy  
+    var url = `/search?id=${coinId}`;                           // For Heroku deploy  
     //var params = {id: coinId};                            // Uncomment for local testing
     //url.search = new URLSearchParams(params);             // Uncomment for local testing
     
