@@ -34,9 +34,9 @@ function getCoinInfo(coinId) {
     //Currently using localhost so it runs on everyone's machine
     //Change the url when deployed
     //var url = new URL('http://localhost:3000/search');    // For local testing
-    var url = new URL('/search');                           // For Heroku deploy  
-    var params = {id: coinId};
-    url.search = new URLSearchParams(params);
+    var url = `/search?${coinId}`;                           // For Heroku deploy  
+    //var params = {id: coinId};                            // Uncomment for local testing
+    //url.search = new URLSearchParams(params);             // Uncomment for local testing
     
     fetch(url).then(response => response.json())
     .then(complete => {
@@ -78,7 +78,7 @@ function getTrending() {
     }
 
     //let url = new URL('http://localhost:3000/get-trending');  // For local testing 
-    let url = new URL('/get-trending');                         // For heroku deploy
+    let url = `/get-trending`;                                  // For heroku deploy
     fetch(url).then(res => res.json())
     .then(data => {
         console.log(data);
