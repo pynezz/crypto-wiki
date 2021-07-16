@@ -233,7 +233,6 @@ header {
 }
 
 .search-button:hover {
-	
 	background-color: var(--bright-green);
 }
 
@@ -243,5 +242,5 @@ header {
 	position: absolute;
 	display: block;
 	float: left;
-
+	z-index: 1;
 }

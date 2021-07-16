@@ -90,6 +90,10 @@ function getTrending() {
     .catch((err) => console.log('Error app.js ', err));
 }
 
+particlesJS.load('particles-js', './assets/particles.json', function() {
+    console.log('callback - particles.js config loaded');
+  });
+
 
 // function SearchToken() {
 //     let input = 'no input';
@@ -133,9 +137,7 @@ function getTrending() {
 //     resultObj.appendChild(pTag);
 // }
 
-// particlesJS.load('particles-js', './assets/particles.json', function() {
-//     console.log('callback - particles.js config loaded');
-//   });
+
 
 // function addObjects(object) {
 //     resultObj.innerHTML = object.description.en;
