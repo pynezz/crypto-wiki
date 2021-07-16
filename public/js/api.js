@@ -1,10 +1,8 @@
 const fetch = require('node-fetch');
 
-module.exports = async function SendRequest(tokenId) {
-
-    let url = 'https://api.coingecko.com/api/v3/coins/' + tokenId;
-    let options = {
-        method: 'GET',
+async function SendRequest(url,method) {
+    const options = {
+        method: method,
         headers: {
             'Content-Type': 'application/json',
         }
@@ -16,4 +14,14 @@ module.exports = async function SendRequest(tokenId) {
     } catch (error) {
         throw Error(error)
     }
+}
+
+exports.searchCoins = async (tokenId) => {
+    const url = `https://api.coingecko.com/api/v3/coins/${tokenId}?localization=en`;
+    return SendRequest(url,'GET');
+}
+
+exports.getTrending = async () => {
+    const url = 'https://api.coingecko.com/api/v3/search/trending'
+    return SendRequest(url,'GET');
 }
