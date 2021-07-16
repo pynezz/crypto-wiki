@@ -10,5 +10,14 @@ Run the server
 `npm start`
 
 ## TODO
-1) Search Suggestion
-2) Random Coin Search
+
+1) Top 5 trending coins
+2) Search Suggestion
+3) Random Coin Search
+
+
+Color Scheme:
+
+Light green: #2afc98
+Background gray: #1e1e1e
+
