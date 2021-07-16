@@ -33,7 +33,8 @@ function getCoinInfo(coinId) {
     }
     //Currently using localhost so it runs on everyone's machine
     //Change the url when deployed
-    var url = new URL('http://localhost:3000/search');
+    //var url = new URL('http://localhost:3000/search');    // For local testing
+    var url = new URL('/search');                           // For Heroku deploy  
     var params = {id: coinId};
     url.search = new URLSearchParams(params);
     
@@ -76,7 +77,8 @@ function getTrending() {
         listItem.appendChild(coinName);
     }
 
-    let url = new URL('http://localhost:3000/get-trending');
+    //let url = new URL('http://localhost:3000/get-trending');  // For local testing 
+    let url = new URL('/get-trending');                         // For heroku deploy
     fetch(url).then(res => res.json())
     .then(data => {
         console.log(data);
