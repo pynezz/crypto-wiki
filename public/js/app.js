@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", getTrending);
 let title = "";
 
 function getCoinInfo(coinId) {
+    removeSuggestions();
+    document.getElementById("section-main").scrollIntoView()
 	resultObj.innerHTML = "";
 	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 

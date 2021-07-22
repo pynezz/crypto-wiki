@@ -53,7 +53,7 @@ function addSuggestions(resultArray) {
         const liElement = document.createElement("li");
         liElement.innerText = result;
         liElement.classList.add("list-item");
-        liElement.onclick()
+        liElement.setAttribute("onclick", `getCoinInfo("${result}")`);
         autocomplete.appendChild(liElement);
     });
 }
