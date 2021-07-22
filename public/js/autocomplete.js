@@ -18,11 +18,20 @@ async function AllTokens() {
             tokens = JSON.parse(reader.response);
             coinList = [...tokens];
             coins = coinList.map(list => list.id);
-            // Here we can add some HTML manipulation after we've checked the input and sorted the resul
         } else {
             console.log('did not work')
         }
     }
+}
+
+function addHTML(resultArray) {
+    let resultsToDisplay = 5;
+    const results = resultArray;
+    if (results.length > resultsToDisplay) {
+        const displayRes = results.slice(0, resultsToDisplay);
+    }
+
+    // Do some HTML magic here
 }
 
 async function checkMatch(e) {
@@ -37,6 +46,7 @@ async function checkMatch(e) {
     }
     finally {
         // Here we need to add some HTML manipulation
+        addHTML(matches);
         console.log(matches);
     }
     // console.log(`search: ${findMatch(inputString)}`);
