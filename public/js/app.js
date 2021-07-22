@@ -6,98 +6,97 @@ const resultObj = document.getElementById("dis1-text");
 const inputFields = document.getElementsByClassName("search");
 const inputArr = [...inputFields];
 
-document.addEventListener('DOMContentLoaded',getTrending);
-let title = '';
+document.addEventListener("DOMContentLoaded", getTrending);
+let title = "";
 
 function getCoinInfo(coinId) {
-    resultObj.innerHTML = "";
-    inputArr.forEach(element => element.value = "");    // Removing the value after search
-  
-    function addObjects(object) {
-        let h3Tag = document.createElement('h3');
-        let pTag = document.createElement('p');
+	resultObj.innerHTML = "";
+	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 
-        let symbol = `${object.symbol}`;
-        pTag.innerHTML = object.description.en;
-        h3Tag.innerHTML = `${object.name} | ${symbol.toUpperCase()}`;
+	function addObjects(object) {
+		let h3Tag = document.createElement("h3");
+		let pTag = document.createElement("p");
 
-        resultObj.appendChild(h3Tag);
-        resultObj.appendChild(pTag);
-    } 
+		let symbol = `${object.symbol}`;
+		pTag.innerHTML = object.description.en;
+		h3Tag.innerHTML = `${object.name} | ${symbol.toUpperCase()}`;
 
-    function notFound(msg) {
-        let pTag = document.createElement('p');
-        pTag.setAttribute('id','not-found');
-        pTag.innerHTML = msg;
-        resultObj.appendChild(pTag);                
-    }
-    //Currently using localhost so it runs on everyone's machine
-    //Change the url when deployed
-    //var url = new URL('http://localhost:3000/search');    // For local testing
-    var url = `/search?id=${coinId}`;                           // For Heroku deploy  
-    //var params = {id: coinId};                            // Uncomment for local testing
-    //url.search = new URLSearchParams(params);             // Uncomment for local testing
-    
-    fetch(url).then(response => response.json())
-    .then(complete => {
-        console.log('Complete: ', complete);
-        if(complete.hasOwnProperty('error'))
-            notFound(complete.error) 
-        else
-            addObjects(complete);
-    })
-    .catch((err) => console.log('Error app.js ', err));
+		resultObj.appendChild(h3Tag);
+		resultObj.appendChild(pTag);
+	}
+
+	function notFound(msg) {
+		let pTag = document.createElement("p");
+		pTag.setAttribute("id", "not-found");
+		pTag.innerHTML = msg;
+		resultObj.appendChild(pTag);
+	}
+	//Currently using localhost so it runs on everyone's machine
+	//Change the url when deployed
+	//var url = new URL('http://localhost:3000/search');    // For local testing
+	var url = `/search?id=${coinId}`; // For Heroku deploy
+	//var params = {id: coinId};                            // Uncomment for local testing
+	//url.search = new URLSearchParams(params);             // Uncomment for local testing
+
+	fetch(url)
+		.then((response) => response.json())
+		.then((complete) => {
+			console.log("Complete: ", complete);
+			if (complete.hasOwnProperty("error")) notFound(complete.error);
+			else addObjects(complete);
+		})
+		.catch((err) => console.log("Error app.js ", err));
 }
 
 function SearchToken() {
-    let input = '';
-    inputArr.forEach(element => {
-        input = element.value.length > 1 ? element.value : input;
-    });
-    input = input.toLowerCase();
-    getCoinInfo(input); 
+	let input = "";
+	inputArr.forEach((element) => {
+		input = element.value.length > 1 ? element.value : input;
+	});
+	input = input.toLowerCase();
+	getCoinInfo(input);
 }
 
 function getTrending() {
-    function setCoinList(num,data) {
-        const listItem = document.getElementById("coin"+num);
-        listItem.setAttribute('onclick',`getCoinInfo("${data.id}")`);
+	function setCoinList(num, data) {
+		const listItem = document.getElementById("coin" + num);
+		listItem.setAttribute("onclick", `getCoinInfo("${data.id}")`);
 
-        const coinIcon = document.createElement('img')        
-        coinIcon.setAttribute('src',data.small)
+		const coinIcon = document.createElement("img");
+		coinIcon.setAttribute("src", data.small);
 
-        const coinSymbol = document.createElement('h3')
-        coinSymbol.innerText = data.symbol;
+		const coinSymbol = document.createElement("h3");
+		coinSymbol.innerText = data.symbol;
 
-        const coinName = document.createElement('div')
-        coinName.innerHTML = data.name;
+		const coinName = document.createElement("div");
+		coinName.innerHTML = data.name;
 
-        listItem.appendChild(coinIcon);
-        listItem.appendChild(coinSymbol);
-        listItem.appendChild(coinName);
-    }
+		listItem.appendChild(coinIcon);
+		listItem.appendChild(coinSymbol);
+		listItem.appendChild(coinName);
+	}
 
-    //let url = new URL('http://localhost:3000/get-trending');  // For local testing 
-    let url = `/get-trending`;                                  // For heroku deploy
-    fetch(url).then(res => res.json())
-    .then(data => {
-        console.log(data);
-        const coinArray = data.coins;
-        for(let i=0;i<coinArray.length;i++) {
-            setCoinList(i+1,coinArray[i].item)
-        }
-    })    
-    .catch((err) => console.log('Error app.js ', err));
+	//let url = new URL('http://localhost:3000/get-trending');  // For local testing
+	let url = `/get-trending`; // For heroku deploy
+	fetch(url)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			const coinArray = data.coins;
+			for (let i = 0; i < coinArray.length; i++) {
+				setCoinList(i + 1, coinArray[i].item);
+			}
+		})
+		.catch((err) => console.log("Error app.js ", err));
 }
 
-particlesJS.load('particles-js', './assets/particles.json', function() {
-    console.log('callback - particles.js config loaded');
-  });
-
+particlesJS.load("particles-js", "./assets/particles.json", function () {
+	console.log("callback - particles.js config loaded");
+});
 
 // function SearchToken() {
 //     let input = 'no input';
-    
+
 //     inputArr.forEach(element => {
 //         input = element.value.length > 1 ? element.value : input;
 //     });
@@ -108,7 +107,7 @@ particlesJS.load('particles-js', './assets/particles.json', function() {
 //     var url = new URL('http://localhost:3000/search');
 //     var params = {id: input};
 //     url.search = new URLSearchParams(params);
-    
+
 //     fetch(url).then(response => response.json())
 //     .then(complete => {
 //         title = complete.name.toString();
@@ -118,7 +117,7 @@ particlesJS.load('particles-js', './assets/particles.json', function() {
 //         console.log('Error app.js ', err);
 //         inputArr.forEach(element => element.value = ""); // Removing the value after search
 //         addObjects(title = '', input);                          // Make it display 'no results'
-//     });                          
+//     });
 // }
 
 // function addObjects(object) {
@@ -136,8 +135,6 @@ particlesJS.load('particles-js', './assets/particles.json', function() {
 //     resultObj.appendChild(h3Tag);
 //     resultObj.appendChild(pTag);
 // }
-
-
 
 // function addObjects(object) {
 //     resultObj.innerHTML = object.description.en;
@@ -157,7 +154,7 @@ particlesJS.load('particles-js', './assets/particles.json', function() {
 //         .catch((err) => {
 //             addObjects('');
 //             console.log('Error app.js ', err)
-//         });    
+//         });
 // }
 
 //No use right now
