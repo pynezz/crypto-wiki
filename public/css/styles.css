@@ -254,7 +254,8 @@ header {
 	flex-basis: 100%;
 	text-align: left;
 	background-color: none;
-	margin-top: -134px;
+	margin-top: -130px;
+	margin-left: 20px;
 	padding-right: 10px;
 	padding-left: 10px;
 	z-index: 10;
@@ -272,17 +273,18 @@ header {
 }
 
 .list-item {
+	color:rgb(250, 245, 255);
 	display: flex;
 	width: 100%;
 	cursor: pointer;
 	padding: 10px;
 	padding-left: 20px;
 	border: none;
-	background-color: lightyellow;
+	background-color: rgb(53, 53, 53);
 }
 
 .list-item:hover {
-	background-color: lawngreen;
+	background-color: rgb(155, 155, 155);
 }
 
 .search-wrapper {

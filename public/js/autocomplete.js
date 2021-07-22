@@ -27,13 +27,6 @@ async function AllTokens() {
     }
 }
 
-function setInputValue(coinId) {
-    inputArr.map(val => val.value = coinId);
-    //TODO Almost done. 
-    //TODO Need to add eventListener so when you click on a suggestion,
-    //TODO you search with that ID
-}
-
 function removeSuggestions() {
     console.log('remove suggestions!');
     if (autocomplete.childNodes.length > 0) {

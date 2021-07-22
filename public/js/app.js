@@ -19,11 +19,15 @@ function getCoinInfo(coinId) {
 		let h3Tag = document.createElement("h3");
 		let pTag = document.createElement("p");
 
+        const coinIcon = document.createElement("img");
+		coinIcon.setAttribute("src", object.image.small);
+
 		let symbol = `${object.symbol}`;
 		pTag.innerHTML = object.description.en;
 		h3Tag.innerHTML = `${object.name} | ${symbol.toUpperCase()}`;
-
+        
 		resultObj.appendChild(h3Tag);
+        resultObj.appendChild(coinIcon);
 		resultObj.appendChild(pTag);
 	}
 
