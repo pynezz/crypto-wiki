@@ -245,9 +245,14 @@ header {
 	z-index: 1;
 }
 
+
+/* Autocomplete */
+
 .autocomplete {
-	text-align: left;
 	display: flex;
+	position: relative;
+	flex-basis: 100%;
+	text-align: left;
 	background-color: none;
 	margin-top: -134px;
 	padding-right: 10px;
@@ -256,9 +261,10 @@ header {
 }
 
 .menu {
-	width: 100%;
+	width: 75%;
 	padding: 0;
-	margin:0;
+	margin: 0;
+	position: absolute;
 }
 
 .autocomplete li {
@@ -266,19 +272,20 @@ header {
 }
 
 .list-item {
+	display: flex;
 	width: 100%;
 	cursor: pointer;
 	padding: 10px;
 	padding-left: 20px;
 	border: none;
 	background-color: lightyellow;
-	
 }
+
 .list-item:hover {
 	background-color: lawngreen;
 }
 
 .search-wrapper {
-	display: flex;
 	flex-direction: column;
+	flex-wrap: wrap;
 }

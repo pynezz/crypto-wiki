@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', AllTokens);
 const inputs = document.getElementsByClassName("search");
+const autocomplete = document.getElementById("autocomplete-menu");
 const inputArray = [...inputs];
 
 inputArr.map(field => field.addEventListener('input', checkMatch));
 
 let coinList = []; 
 let coins = [];
+let searchText = "";
+
 async function AllTokens() {
     let tokens = [];
     var reader = new XMLHttpRequest();
@@ -24,19 +27,51 @@ async function AllTokens() {
     }
 }
 
-function addHTML(resultArray) {
-    let resultsToDisplay = 5;
-    const results = resultArray;
-    if (results.length > resultsToDisplay) {
-        const displayRes = results.slice(0, resultsToDisplay);
-    }
+function setInputValue(coinId) {
+    inputArr.map(val => val.value = coinId);
+    //TODO Almost done. 
+    //TODO Need to add eventListener so when you click on a suggestion,
+    //TODO you search with that ID
+}
 
-    // Do some HTML magic here
+function removeSuggestions() {
+    console.log('remove suggestions!');
+    if (autocomplete.childNodes.length > 0) {
+        while (autocomplete.firstChild) {
+          autocomplete.removeChild(autocomplete.firstChild);
+        }
+    }
+}
+
+function addSuggestions(resultArray) {
+    let resultsToDisplay = 5;
+    let results = resultArray;
+    if (results.length > resultsToDisplay) {
+        results = results.slice(0, resultsToDisplay);
+    }
+    results.map(result => {
+        const liElement = document.createElement("li");
+        liElement.innerText = result;
+        liElement.classList.add("list-item");
+        liElement.onclick()
+        autocomplete.appendChild(liElement);
+    });
 }
 
 async function checkMatch(e) {
-    // let inputString = e.target.value;
+
+    if (searchText !== e.target.value) {
+        removeSuggestions();
+    }
+
+    if (e.target.value.length < 2) {
+        removeSuggestions();
+        return;
+    }
+
+    searchText = e.target.value;
     let matches = [];
+
     try {
         matches = await coins.filter(el => el.match(`^${e.target.value}`)) 
         return await matches;
@@ -45,9 +80,7 @@ async function checkMatch(e) {
         console.log("Some error");
     }
     finally {
-        // Here we need to add some HTML manipulation
-        addHTML(matches);
-        console.log(matches);
+        addSuggestions(matches);
     }
     // console.log(`search: ${findMatch(inputString)}`);
     
