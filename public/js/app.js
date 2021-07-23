@@ -1,6 +1,4 @@
-// var searchtext= document.getElementById("search-text").value;
-// console.log(searchtext);
-// console.log("hello");
+var coin;
 
 const resultObj = document.getElementById("dis1-text");
 const inputFields = document.getElementsByClassName("search");
@@ -174,3 +172,4 @@ particlesJS.load("particles-js", "./assets/particles.json", function () {
 //         res.json().then(json => console.log(json));
 //     });
 // };
+
