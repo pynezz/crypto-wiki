@@ -10,7 +10,11 @@ document.addEventListener("keydown", function (e) {
       inputArr.map(field => field.value = "");
       removeSuggestions();
     }
-  });
+    if (e.keyCode === 13 && inputArr.map(field => field.value.length > 0)) {
+        SearchToken();
+    }
+});
+
 
 let coinList = []; 
 let coins = [];
