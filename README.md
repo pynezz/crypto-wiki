@@ -30,9 +30,9 @@ Run the server
 | Search Suggestion | :white_check_mark: |
 | Random Coin Search | :x: |
 | Add links to the result page | :x: |
-| Search with Enter key | :x: |
+| Search with Enter key | :white_check_mark: |
 | Arrow keys on suggestions | :x: |
-| Clear search entry with Esc | :x: |
+| Clear search entry with Esc | :white_check_mark: |
 
 
 ## Color Scheme
