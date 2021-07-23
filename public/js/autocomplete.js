@@ -5,6 +5,17 @@ const inputArray = [...inputs];
 
 inputArr.map(field => field.addEventListener('input', checkMatch));
 
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && inputArr.map(field => field.value.length > 0)) {
+      inputArr.map(field => field.value = "");
+      removeSuggestions();
+    }
+    if (e.keyCode === 13 && inputArr.map(field => field.value.length > 0)) {
+        SearchToken();
+    }
+});
+
+
 let coinList = []; 
 let coins = [];
 let searchText = "";
