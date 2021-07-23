@@ -1,41 +1,27 @@
-require('dotenv').config();
-const rp = require('request-promise-native');
+const fetch = require('node-fetch');
 
-const URL = process.env.API_URL;
-const KEY = process.env.API_KEY;
-
-const requestOptions = {
-    method: 'GET',
-    qs: {
-        'start': '1',
-        'limit': '5',
-        'convert': 'USD'
-    },
-    headers: {
-        'X-CMC_PRO_API_KEY': KEY
-    },
-    json: true,
-    gzip: true
-};
-
-const requestOptionsTest = {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json'
+async function SendRequest(url,method) {
+    const options = {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }
+    try {
+        const response = await fetch(url, options)
+        const data = response.json();
+        return data;
+    } catch (error) {
+        throw Error(error)
     }
 }
 
+exports.searchCoins = async (tokenId) => {
+    const url = `https://api.coingecko.com/api/v3/coins/${tokenId}?localization=en`;
+    return SendRequest(url,'GET');
+}
 
-module.exports = RunApi = async (req, res) => {
-    let data = [];
-    console.log(`Sending request to ${process.env.JSON_API}${'/todos/1'}`);
-    await rp(`${process.env.JSON_API}${'/todos/1'}`, requestOptionsTest).then( response => {
-        data = response;
-        console.log('RunAPI response: ', response);
-    }).catch((err) => {
-        console.log('Error: ', err.message);
-        return err.message;
-    });
-    data = await JSON.parse(data);
-    res.send(data);
+exports.getTrending = async () => {
+    const url = 'https://api.coingecko.com/api/v3/search/trending'
+    return SendRequest(url,'GET');
 }

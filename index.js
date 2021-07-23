@@ -1,33 +1,27 @@
 const express = require('express');
 const app = express();
-const http = require('http').createServer(app);
 const PORT = process.env.PORT || 3000;
 
-require('dotenv').config();
-const reader = require('fs');
-
-const Api = require('./public/js/api');
-
-const AllTokens = (tokenId) => {
-    let tokens = [];
-    reader.readFile('./public/json/coingecko_all_coins.json', (err, data) => {
-        if (err) console.log(err);
-        tokens = JSON.parse(data); 
-        for (let i = 0; i < tokens.length; i++) {
-            if (tokens[i].id === tokenId) {
-                console.log(tokens[i]);
-                return;
-            }
-        }
-    });
-    
-    console.log(tokens.id);
-}
-AllTokens('ethereum');
-
-
+//TODO: Search suggestion functionality 
+// const reader = require('fs');
+// let tokens = [];
+// const AllTokens = () => {
+    //     reader.readFile('./public/json/coingecko_all_coins.json', (err, data) => {
+        //         if (err) console.log(err);
+        //         tokens = JSON.parse(data); 
+        //     });
+        // }
+        // AllTokens();
+        
+const {searchCoins,getTrending} = require('./public/js/api');
 
 app.use(express.static('public'));
+
+//Handles errors , change the implementation to take effect everywhere
+const handleErr = (err,res) => {
+    console.log(err);
+    return res?.status(500)?.json({msg: "An error occurred, Please try again later!"});
+}
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html', (err) => {
@@ -35,25 +29,27 @@ app.get('/', (req, res) => {
     })
 })
 
-app.get('/data', require('./public/js/api'));
+app.get('/search*', async (req, res) => {
+    // console.log('Request params: ', req.query);
+    try {
+        const data = await searchCoins(req.query.id)
+        // console.log(data);
+        return res.status(200).json(data);
+    } catch(err) {
+        handleErr(err,res);
+    }
+}) 
 
-app.get('/all', (req, res) => {
-    res.send('<p>what</p>');
-})
-// cryptocurrency/listings/latest
-app.get('/api?*', async (req, res) => {
-    let url = req.originalUrl.substring(4, req.originalUrl.length);
-    console.log('url: ', url)
-    result = await Api(`${url}`);
-    res.setHeader('Content-Type', 'application/json');
-    console.log(result.title);
-    console.log('Result: ', result)
-    res.send(result);
-    //console.log(res.json());
-    res.end();
+app.get('/get-trending',async (req,res) => {
+    try {
+        const data = await getTrending();    
+        return res.status(200).json(data);
+    } catch (err) {
+        handleErr(err,res);
+    }
 })
 
-http.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log('Server running at ', PORT);
 });
 
