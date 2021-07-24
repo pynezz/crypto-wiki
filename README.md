@@ -20,6 +20,8 @@ Install all dependencies
 
 Run the server
 `npm start`
+or 
+`nodemon ./index.js`
 
 ## TODO
 
