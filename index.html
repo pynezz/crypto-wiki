@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Crpto Wiki</title>
+    <title>Coin Wiki</title>
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
 
     <style>
@@ -46,30 +46,31 @@
   <section class="section" id="section-main">
 
     <div class="container">
-        <header>
-            <h1 class="logo">
-                CoinWiki
-            </h1>
-            <div class="search-container">
-                <input type="text" class="search" id="search-text" placeholder="Search...">
-                <button class="search-btn" onclick="SearchToken()">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </button>
-            </div>
-        </header>
+      <header class="result-header">
+        <h1 class="logo" id="logo-bottom">
+            CoinWiki
+        </h1>
+        <div class="search-container">
+            <input type="text" class="search" id="search-text" placeholder="Search...">
+            <button class="search-btn" onclick="SearchToken()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+        </div>
+      </header>
+      <div class="main-body">
         <div class="sidebar">
-            <h2 class="subheading">Trending Coins</h2>
-            <ul id="trending">
-                <li id="coin1"></li>
-                <li id="coin2"></li>
-                <li id="coin3"></li>
-                <li id="coin4"></li>
-                <li id="coin5"></li>
-                <li id="coin6"></li>
-                <li id="coin7"></li>
-            </ul>
+          <h2 class="subheading">Trending Coins</h2>
+          <ul id="trending">
+              <li id="coin1"></li>
+              <li id="coin2"></li>
+              <li id="coin3"></li>
+              <li id="coin4"></li>
+              <li id="coin5"></li>
+              <li id="coin6"></li>
+              <li id="coin7"></li>
+          </ul>
         </div>
         <div class="content">
             <h2 class="subheading">Coin details</h2>
@@ -77,6 +78,8 @@
 
             </div>
         </div>
+      </div>
+    </div>
         <!-- <div class="footer">
             Footer
         </div> -->
