@@ -86,35 +86,5 @@ async function checkMatch(e) {
     finally {
         addSuggestions(matches);
     }
-    // console.log(`search: ${findMatch(inputString)}`);
-    
-    // async function findMatch(query) {
-    //     if (coins !== undefined) {
-            
-    //         //let search = new RegExp(`^(${query})*`, 'gi');
-
-
-    //         // coins.forEach(element => {
-    //         //     if (element.match(search)) {
-    //         //         console.log('yep, it does work here')
-    //         //     }
-    //         //     else {
-    //         //         console.log('no match');
-    //         //     }
-    //         // });
-    //         // search = query.toLowerCase();
-            
-    //         //console.log(search)
-    //         //console.log(new RegExp(`^${search}*`, 'gi'));
-    //         return coins.filter(el => {
-    //             el.match(`^${query}*`);
-    //         });
-    //         // return coins.filter(el => el === search);
-    //         // if (coins.match(search)) {
-    //         //     console.log('god damn that worked')
-    //         // }
-    //     }
-    //         //el => el.toLowerCase().indexOf(e.target.value.toLowerCase()) !== -1
-    // }(console.log(coins.filter(el => el.match("^bitcoi"))));
 }
 
