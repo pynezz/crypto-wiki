@@ -14,6 +14,8 @@ function getCoinInfo(coinId) {
 	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 
 	function addObjects(object) {
+        fetchLinks(object);
+
 		let h3Tag = document.createElement("h3");
 		let pTag = document.createElement("p");
 
@@ -29,6 +31,8 @@ function getCoinInfo(coinId) {
 		resultObj.appendChild(pTag);
 
         document.getElementById("coin-content").scrollIntoView();
+
+        
 	}
 
 	function notFound(msg) {
