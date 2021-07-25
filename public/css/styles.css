@@ -3,7 +3,7 @@
 
 :root {
 	--primary: #2afc98;
-	--primary-dark: #2afc98;
+	--primary-dark: #36d88a;
 	--bg: rgb(24, 24, 24);
 	--bg-color: rgb(19, 20, 20);
 	--bg-dark: #111111;
@@ -11,6 +11,7 @@
 	--bg-content-header: rgb(19, 51, 35);
 	--text-input-top: #525252;
 	--text-input-main: #a3a3a3;
+	--text-light: #c4c4c4;
 	--text-gray: #747474;
 	--text-gray-dark: #414141;
 	--bright-green: #2afc98;
@@ -21,7 +22,7 @@
 }
 
 a {
-	color: var(--primary);
+	color: #1ab66a;
 }
 
 body {
@@ -203,6 +204,13 @@ header {
     color: var(--primary-dark);
 }
 
+.subheading-smaller {
+	margin: auto;
+	font-size: 1.3rem;
+	margin: 0;
+	color: var(--primary-dark);
+}
+
 
 /* Coin info main section */
 
@@ -225,10 +233,10 @@ header {
 }
 
 #dis1-text > h3 {
-    color: var(--text-gray-dark);
+    color: var(--text-gray);
 }
 #dis1-text > p {
-    color: var(--text-gray);
+    color: var(--text-light);
 }
 #not-found {
     text-align: center;

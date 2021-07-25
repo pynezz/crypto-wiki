@@ -23,7 +23,6 @@ let searchText = "";
 async function AllTokens() {
     let tokens = [];
     var reader = new XMLHttpRequest();
-    console.log('this works')
     reader.open('GET', '../json/coingecko_all_coins.json');
     reader.setRequestHeader("Accept", "application/json");
     reader.send();
@@ -39,7 +38,6 @@ async function AllTokens() {
 }
 
 function removeSuggestions() {
-    console.log('remove suggestions!');
     if (autocomplete.childNodes.length > 0) {
         while (autocomplete.firstChild) {
           autocomplete.removeChild(autocomplete.firstChild);
