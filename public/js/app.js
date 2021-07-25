@@ -9,7 +9,7 @@ let title = "";
 
 function getCoinInfo(coinId) {
     removeSuggestions();
-    document.getElementById("coin-content").scrollIntoView()
+    
 	resultObj.innerHTML = "";
 	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 
@@ -27,6 +27,8 @@ function getCoinInfo(coinId) {
 		resultObj.appendChild(h3Tag);
         resultObj.appendChild(coinIcon);
 		resultObj.appendChild(pTag);
+
+        document.getElementById("coin-content").scrollIntoView();
 	}
 
 	function notFound(msg) {
