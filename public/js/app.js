@@ -9,7 +9,7 @@ let title = "";
 
 function getCoinInfo(coinId) {
     removeSuggestions();
-    document.getElementById("section-main").scrollIntoView()
+    document.getElementById("coin-content").scrollIntoView()
 	resultObj.innerHTML = "";
 	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 
@@ -39,8 +39,8 @@ function getCoinInfo(coinId) {
 	//Change the url when deployed
 	//var url = new URL('http://localhost:3000/search');    // For local testing
 	var url = `/search?id=${coinId}`; // For Heroku deploy
-	//var params = {id: coinId};                            // Uncomment for local testing
-	//url.search = new URLSearchParams(params);             // Uncomment for local testing
+	//var params = {id: coinId};                            // Uncomment for local testing - seems to work with local too
+	//url.search = new URLSearchParams(params);             // Uncomment for local testing - seems to work with local too
 
 	fetch(url)
 		.then((response) => response.json())
@@ -160,16 +160,4 @@ particlesJS.load("particles-js", "./assets/particles.json", function () {
 //             console.log('Error app.js ', err)
 //         });
 // }
-
-//No use right now
-// function searchfn(){
-//     document.getElementById("dis1-text").innerHTML = "";
-//     var searchtext= document.getElementById("search-text").value;
-//     console.log(searchtext);
-//     document.getElementById("dis1-text").innerHTML += " Hii there, u searched for "+ searchtext;
-
-//     fetch('api/todos/1') .then(res => {
-//         res.json().then(json => console.log(json));
-//     });
-// };
 
