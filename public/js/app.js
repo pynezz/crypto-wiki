@@ -31,7 +31,6 @@ function getCoinInfo(coinId) {
 		resultObj.appendChild(pTag);
 
         document.getElementById("coin-content").scrollIntoView();
-
         
 	}
 

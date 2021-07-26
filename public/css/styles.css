@@ -251,11 +251,15 @@ header {
 #links {
 	list-style-type: none;
 	padding: 0;
-	color:lavender;
+}
+
+#links > li > a {
+	text-decoration: none;
 }
 
 #links > li {
 	color: var(--primary-dark);
+	padding-bottom: 10px;
 }
 
 #dis1-text {
