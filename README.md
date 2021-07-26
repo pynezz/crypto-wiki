@@ -30,11 +30,13 @@ or
 | Top 5 trending coins | :white_check_mark: |
 | Merge the index and result page | :white_check_mark: |
 | Search Suggestion | :white_check_mark: |
-| Random Coin Search | :x: |
-| Add links to the result page | :x: |
+| Add links to the result page | :white_check_mark: |
 | Search with Enter key | :white_check_mark: |
-| Arrow keys on suggestions | :x: |
 | Clear search entry with Esc | :white_check_mark: |
+| Add categories to result page | :white_check_mark: |
+| Arrow keys on suggestions | :x: |
+| Suggestions don't work on mobile | :x: |
+| Random Coin Search | :x: |
 
 
 ## Color Scheme
