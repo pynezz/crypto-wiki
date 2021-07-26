@@ -11,10 +11,12 @@ function fetchLinks(object) {
         ulElement.setAttribute("id", "links");
 
         if (links.homepage) {
-            const listItem = document.createElement("a");
-            listItem.setAttribute("href", links.homepage[0]);
-            listItem.innerHTML = links.homepage[0];
-            listItem.innerText = "Homepage";
+            const listItem = document.createElement("li");
+            const alistItem = document.createElement("a");
+            alistItem.setAttribute("href", links.homepage[0]);
+            alistItem.innerHTML = links.homepage[0];
+            alistItem.innerText = "Homepage";
+            listItem.appendChild(alistItem);
             ulElement.appendChild(listItem);
         }
 
