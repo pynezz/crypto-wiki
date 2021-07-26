@@ -12,17 +12,13 @@ function fetchLinks(object) {
         ulElement.setAttribute("id", "links");
 
         switch(true) {
-            case links.homepage != null: 
-                console.log('homepage')
+            case links.homepage != null:
                 createLinkHTML(links.homepage[0], "Homepage");
             case links.blockchain_site != null:
-                console.log('block explorer');
                 createLinkHTML(links.blockchain_site[0], "Block Explorer");
-
             // Add cases here to add more links to be displayed
             default: break;
         }
-
         function createLinkHTML(linkToDisplay, text) {
             const listItem = document.createElement("li");
             const alistItem = document.createElement("a");
@@ -34,8 +30,6 @@ function fetchLinks(object) {
             listItem.appendChild(alistItem);
             ulElement.appendChild(listItem);
         }
-
-        // Need to remove these after 
         
         linkList.appendChild(ulElement);
     }
