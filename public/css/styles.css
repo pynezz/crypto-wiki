@@ -248,6 +248,10 @@ header {
 	flex-shrink: 3;
 }
 
+.p-misc {
+	color: var(--text-light);
+}
+
 #links {
 	list-style-type: none;
 	padding: 0;

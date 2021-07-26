@@ -15,6 +15,8 @@ function getCoinInfo(coinId) {
 
 	function addObjects(object) {
         fetchLinks(object);
+		hashingAlgorithmHTML(object);
+		categoryHTML(object);
 
 		let h3Tag = document.createElement("h3");
 		let pTag = document.createElement("p");
