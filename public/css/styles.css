@@ -159,7 +159,7 @@ header {
 	background-color: var(--bg);
 	padding: 8px;
 	flex-grow: 1;
-	flex-shrink: 1;
+	flex-shrink: 3;
 }
 
 /* .sidebar > h2 {
@@ -185,7 +185,7 @@ header {
 }
 #trending > li > img {
     width: inherit;
-    border-radius: 50px;
+    border-radius: 100%;
 }
 #trending > li > h3 {
     margin:0;
@@ -206,7 +206,7 @@ header {
 
 .subheading-smaller {
 	margin: auto;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	margin: 0;
 	color: var(--primary-dark);
 }
@@ -215,17 +215,51 @@ header {
 /* Coin info main section */
 
 .content {
-	flex-grow: 4;
 	display: flex;
+	flex-grow: 3;
+	text-align: left;
 	flex-wrap: wrap;
 	align-self: flex-start;
-	flex-direction: column;
 	min-height: auto;
-	width: min-content;
+	flex-shrink: 1;
 
 	border-radius: 0px 0px 8px 0px;
 	background-color: var(--bg-content);
 	padding: 16px;
+}
+
+.coin-details {
+	max-width: 80ch;
+	flex-wrap: wrap;
+	display: flex;
+	min-height: auto;
+	flex-direction: column;
+	flex-grow: 3;
+	padding: 4px;
+	margin-right: 5vw;
+	flex-shrink: 2;
+}
+
+.misc-info {
+	display: flex;
+	min-width: min-content;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 3;
+}
+
+#links {
+	list-style-type: none;
+	padding: 0;
+}
+
+#links > li > a {
+	text-decoration: none;
+}
+
+#links > li {
+	color: var(--primary-dark);
+	padding-bottom: 10px;
 }
 
 #dis1-text {

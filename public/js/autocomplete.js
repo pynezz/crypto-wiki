@@ -62,18 +62,17 @@ function addSuggestions(resultArray) {
 
 async function checkMatch(e) {
 
-    if (searchText !== e.target.value) {
-        removeSuggestions();
+    if (searchText !== e.target.value) {    // Check if input is different than before
+        removeSuggestions();                // if so, we need to update the suggestions
     }
 
-    if (e.target.value.length < 2) {
-        removeSuggestions();
-        return;
+    if (e.target.value.length < 2) {        // If the input is less than 2 characters,
+        removeSuggestions();                // don't give suggestions yet
+        return;                             // And we don't need to do anything: return.
     }
 
     searchText = e.target.value;
     let matches = [];
-
     try {
         matches = await coins.filter(el => el.match(`^${e.target.value}`)) 
         return await matches;
