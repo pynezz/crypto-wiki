@@ -25,3 +25,12 @@ exports.getTrending = async () => {
     const url = 'https://api.coingecko.com/api/v3/search/trending'
     return SendRequest(url,'GET');
 }
+/**
+ * This function uses the coinpaprika API and id system
+ * @param {string} tokenId from coinpaprika id list
+ * @returns request to coinpaprika
+ */
+exports.getWhitepapers = async (tokenId) => {
+    const url = `https://api.coinpaprika.com/v1/coins/${tokenId}`;
+    return SendRequest(url, 'GET');
+}

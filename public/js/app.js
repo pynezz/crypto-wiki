@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", getTrending);
 let title = "";
 
 var coin;
+let coinPaprikaData = [];
 
 function getCoinInfo(coinId) {
     removeSuggestions();
@@ -17,6 +18,7 @@ function getCoinInfo(coinId) {
         fetchLinks(object);
 		hashingAlgorithmHTML(object);
 		categoryHTML(object);
+		fetchDataFromCoinpaprika(object);
 
 		let h3Tag = document.createElement("h3");
 		let pTag = document.createElement("p");
@@ -101,6 +103,44 @@ function getTrending() {
 		.catch((err) => console.log("Error app.js ", err));
 }
 
+// PARTICLES
 particlesJS.load("particles-js", "./assets/particles.json", function () {
 	console.log("callback - particles.js config loaded");
 });
+
+
+// COINPAPRIKA 
+
+// I want to make a list of all the objects in coingecko api, and 
+// add the coinpaprika id's to that list of objects under each corresponding token
+// - they have symbol in common. 
+// - OR - I can use coingecko symbol to search in 
+// the coinpaprika list and return the ID for that symbol to search with
+// pseudo-code: 
+// $id = get coingecko token object.symbol
+// coinId = coinpaprika match with $id 
+// if multiple symbols match, return name, and make user choose which one
+// this script goes somewhere else
+
+async function fetchDataFromCoinpaprika(object) {
+	function fetchWhitepaper(coinId) {
+		let url = `/get-whitepaper?id=${coinId}`;
+		fetch(url)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log('coinpaprika API: ', data);
+				// Generate HTML from here
+			})
+			.catch((err) => console.log("Error getting whitepaper - app.js", err));
+	}
+
+	await searchCoinpaprikaList(object.symbol.toUpperCase())
+		.then(res => res)
+		.then((data) => {
+			fetchWhitepaper(data[0].id);
+		})
+		.catch((err) => {
+			console.log("An error occured fetching coinpaprikaList Async", err)
+		});
+}
+

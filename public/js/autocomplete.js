@@ -21,6 +21,11 @@ let coins = [];
 let searchText = "";
 
 async function AllTokens() {
+    loadAllCoingeckoTokens();
+    loadAllCoinpaprikaTokens();
+}
+
+function loadAllCoingeckoTokens() {
     let tokens = [];
     var reader = new XMLHttpRequest();
     reader.open('GET', '../json/coingecko_all_coins.json');
