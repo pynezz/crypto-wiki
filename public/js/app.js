@@ -14,36 +14,6 @@ function getCoinInfo(coinId) {
 	resultObj.innerHTML = "";
 	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 
-	function addObjects(object) {
-        fetchLinks(object);
-		hashingAlgorithmHTML(object);
-		categoryHTML(object);
-		fetchDataFromCoinpaprika(object);
-
-		let h3Tag = document.createElement("h3");
-		let pTag = document.createElement("p");
-
-        const coinIcon = document.createElement("img");
-		coinIcon.setAttribute("src", object.image.small);
-
-		let symbol = `${object.symbol}`;
-		pTag.innerHTML = object.description.en;
-		h3Tag.innerHTML = `${object.name} | ${symbol.toUpperCase()}`;
-        
-		resultObj.appendChild(h3Tag);
-        resultObj.appendChild(coinIcon);
-		resultObj.appendChild(pTag);
-
-        document.getElementById("coin-content").scrollIntoView();
-        
-	}
-
-	function notFound(msg) {
-		let pTag = document.createElement("p");
-		pTag.setAttribute("id", "not-found");
-		pTag.innerHTML = msg;
-		resultObj.appendChild(pTag);
-	}
 	//Currently using localhost so it runs on everyone's machine
 	//Change the url when deployed
 	//var url = new URL('http://localhost:3000/search');    // For local testing
@@ -59,6 +29,37 @@ function getCoinInfo(coinId) {
 			else addObjects(complete);
 		})
 		.catch((err) => console.log("Error app.js ", err));
+}
+
+function addObjects(object) {
+	fetchLinks(object);
+	hashingAlgorithmHTML(object);
+	categoryHTML(object);
+	fetchDataFromCoinpaprika(object);
+
+	let h3Tag = document.createElement("h3");
+	let pTag = document.createElement("p");
+
+	const coinIcon = document.createElement("img");
+	coinIcon.setAttribute("src", object.image.small);
+
+	let symbol = `${object.symbol}`;
+	pTag.innerHTML = object.description.en;
+	h3Tag.innerHTML = `${object.name} | ${symbol.toUpperCase()}`;
+	
+	resultObj.appendChild(h3Tag);
+	resultObj.appendChild(coinIcon);
+	resultObj.appendChild(pTag);
+
+	document.getElementById("coin-content").scrollIntoView();
+	
+}
+
+function notFound(msg) {
+	let pTag = document.createElement("p");
+	pTag.setAttribute("id", "not-found");
+	pTag.innerHTML = msg;
+	resultObj.appendChild(pTag);
 }
 
 function SearchToken() {
@@ -123,13 +124,15 @@ particlesJS.load("particles-js", "./assets/particles.json", function () {
 // this script goes somewhere else
 
 async function fetchDataFromCoinpaprika(object) {
+	let whitepaperLink = {...object};
+
 	function fetchWhitepaper(coinId) {
 		let url = `/get-whitepaper?id=${coinId}`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('coinpaprika API: ', data);
-				// Generate HTML from here
+				whitepaperLink.links.whitepaper = data;
+				fetchLinks(whitepaperLink);
 			})
 			.catch((err) => console.log("Error getting whitepaper - app.js", err));
 	}
@@ -143,4 +146,3 @@ async function fetchDataFromCoinpaprika(object) {
 			console.log("An error occured fetching coinpaprikaList Async", err)
 		});
 }
-
