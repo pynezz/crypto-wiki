@@ -4,7 +4,6 @@ function fetchLinks(object) {
     let links = [];
     links = object.links;
     linkList.innerHTML = "";
-
     createHTML(links);
 }
 
@@ -12,16 +11,10 @@ function createHTML(links) {
     const ulElement = document.createElement("ul");
     ulElement.setAttribute("id", "links");
 
-    switch(true) {
-        case links.homepage != null:
-            createLinkHTML(links.homepage[0], "Homepage");
-        case links.blockchain_site != null:
-            createLinkHTML(links.blockchain_site[0], "Block Explorer");
-        case links.whitepaper != null:
-            createLinkHTML(links.whitepaper, "Whitepaper")
-        // Add cases here to add more links to be displayed
-        default: break;
-    }
+    links.hasOwnProperty('homepage') ? createLinkHTML(links.homepage[0], "Homepage") : "";  // Change up with domain name later
+    links.hasOwnProperty('whitepaper') ? createLinkHTML(links.whitepaper, "Whitepaper") : "";
+    links.hasOwnProperty('blockchain_site') ? createLinkHTML(links.blockchain_site[0], "Block Explorer") : "";
+
     function createLinkHTML(linkToDisplay, text) {
         const listItem = document.createElement("li");
         const alistItem = document.createElement("a");

@@ -3,8 +3,13 @@ const inputFields = document.getElementsByClassName("search");
 const inputArr = [...inputFields];
 
 document.addEventListener("DOMContentLoaded", getTrending);
-let title = "";
 
+// PARTICLES
+particlesJS.load("particles-js", "./assets/particles.json", function () {
+	console.log("callback - particles.js config loaded");
+});
+
+let title = "";
 var coin;
 let coinPaprikaData = [];
 
@@ -14,13 +19,7 @@ function getCoinInfo(coinId) {
 	resultObj.innerHTML = "";
 	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 
-	//Currently using localhost so it runs on everyone's machine
-	//Change the url when deployed
-	//var url = new URL('http://localhost:3000/search');    // For local testing
-	var url = `/search?id=${coinId}`; // For Heroku deploy
-	//var params = {id: coinId};                            // Uncomment for local testing - seems to work with local too
-	//url.search = new URLSearchParams(params);             // Uncomment for local testing - seems to work with local too
-
+	var url = `/search?id=${coinId}`;
 	fetch(url)
 		.then((response) => response.json())
 		.then((complete) => {
@@ -32,10 +31,9 @@ function getCoinInfo(coinId) {
 }
 
 function addObjects(object) {
-	fetchLinks(object);
 	hashingAlgorithmHTML(object);
 	categoryHTML(object);
-	fetchDataFromCoinpaprika(object);
+	fetchDataFromCoinpaprika(object); // This also generates all the other links
 
 	let h3Tag = document.createElement("h3");
 	let pTag = document.createElement("p");
@@ -52,7 +50,6 @@ function addObjects(object) {
 	resultObj.appendChild(pTag);
 
 	document.getElementById("coin-content").scrollIntoView();
-	
 }
 
 function notFound(msg) {
@@ -89,13 +86,11 @@ function getTrending() {
 		listItem.appendChild(coinSymbol);
 		listItem.appendChild(coinName);
 	}
-
 	//let url = new URL('http://localhost:3000/get-trending');  // For local testing
 	let url = `/get-trending`; // For heroku deploy
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
 			const coinArray = data.coins;
 			for (let i = 0; i < coinArray.length; i++) {
 				setCoinList(i + 1, coinArray[i].item);
@@ -104,25 +99,13 @@ function getTrending() {
 		.catch((err) => console.log("Error app.js ", err));
 }
 
-// PARTICLES
-particlesJS.load("particles-js", "./assets/particles.json", function () {
-	console.log("callback - particles.js config loaded");
-});
-
-
-// COINPAPRIKA 
-
-// I want to make a list of all the objects in coingecko api, and 
-// add the coinpaprika id's to that list of objects under each corresponding token
-// - they have symbol in common. 
-// - OR - I can use coingecko symbol to search in 
+// COINPAPRIKA
+// I can use coingecko symbol to search in 
 // the coinpaprika list and return the ID for that symbol to search with
 // pseudo-code: 
 // $id = get coingecko token object.symbol
 // coinId = coinpaprika match with $id 
 // if multiple symbols match, return name, and make user choose which one
-// this script goes somewhere else
-
 async function fetchDataFromCoinpaprika(object) {
 	let whitepaperLink = {...object};
 
@@ -131,8 +114,14 @@ async function fetchDataFromCoinpaprika(object) {
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => {
-				whitepaperLink.links.whitepaper = data;
-				fetchLinks(whitepaperLink);
+				if (data.whitepaper.link) {
+					console.log('Found whitepaper! ', data.whitepaper.link);
+					whitepaperLink.links.whitepaper = data.whitepaper.link;
+					fetchLinks(whitepaperLink);
+				}
+				else {
+					fetchLinks(whitepaperLink);
+				}
 			})
 			.catch((err) => console.log("Error getting whitepaper - app.js", err));
 	}
@@ -140,7 +129,11 @@ async function fetchDataFromCoinpaprika(object) {
 	await searchCoinpaprikaList(object.symbol.toUpperCase())
 		.then(res => res)
 		.then((data) => {
-			fetchWhitepaper(data[0].id);
+			if (data.length > 0) { 
+				fetchWhitepaper(data[0].id);// Will return the first match on symbol 
+			} else {						// - should add possibility to choose if length > 1
+				fetchLinks(whitepaperLink); // This object does not contain a whitepaper 
+			}								// - preventing a link with undefined to be generated  
 		})
 		.catch((err) => {
 			console.log("An error occured fetching coinpaprikaList Async", err)

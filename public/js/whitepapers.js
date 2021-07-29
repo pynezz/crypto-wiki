@@ -13,13 +13,15 @@ function loadAllCoinpaprikaTokens() {
             tokens = JSON.parse(reader.response);
             coinPaprikaCoins = [...tokens];
             coinPaprikaSymbols = coinPaprikaCoins.map(list => list.symbol);
-            console.log('coinpaprikatest: ', coinPaprikaCoins[0]);
         } else {
             console.log('fetching all coinpaprika coins did not work')
         }
     }
 }
 
+// Search for symbols in coinpaprika list that matches symbol from coingecko list.
+// Return the object from coinpaprika local list.
+// Then we use that objects ID to search coinpaprika   
 async function searchCoinpaprikaList(coinSymbol) {
     let matches = [];
     try {
@@ -33,8 +35,6 @@ async function searchCoinpaprikaList(coinSymbol) {
         if (matches.length > 1) {
             // MAKE USER CHOOSE
         }
-        // Now execute a function that uses matches[0].id to fetch from API
-        console.log("That worked!", matches);
         return matches;
     }
 }

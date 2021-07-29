@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 app.get('/get-whitepaper*', async (req, res) => {
     try {
         var data = await getWhitepapers(req.query.id); 
-        return res.status(200).json(data.whitepaper.link);
+        return res.status(200).json(data);
     } catch(err) {
         handleErr(err, res);
     }
