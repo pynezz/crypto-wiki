@@ -5,6 +5,10 @@ const inputArray = [...inputs];
 
 inputArr.map(field => field.addEventListener('input', checkMatch));
 
+// FOR TESTING MOBILE AUTOCOMPLETE
+const topLogo = document.getElementById("logo-top");
+// --- END TESTING MOBILE AUTOCOMPLETE
+
 document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && inputArr.map(field => field.value.length > 0)) {
       inputArr.map(field => field.value = "");
@@ -61,13 +65,12 @@ function addSuggestions(resultArray) {
         liElement.innerText = result;
         liElement.classList.add("list-item");
         liElement.setAttribute("onclick", `getCoinInfo("${result}")`);
-        autocomplete.appendChild(liElement);
+        autocomplete.appendChild(liElement); 
     });
 }
 
 async function checkMatch(e) {
-
-    if (searchText !== e.target.value) {    // Check if input is different than before
+    if (searchText.toLowerCase() !== e.target.value.toLowerCase()) {    // Check if input is different than before
         removeSuggestions();                // if so, we need to update the suggestions
     }
 
@@ -76,10 +79,10 @@ async function checkMatch(e) {
         return;                             // And we don't need to do anything: return.
     }
 
-    searchText = e.target.value;
+    searchText = e.target.value.toLowerCase();
     let matches = [];
     try {
-        matches = await coins.filter(el => el.match(`^${e.target.value}`)) 
+        matches = await coins.filter(el => el.match(`^${e.target.value.toLowerCase()}`)) 
         return await matches;
     }
     catch {
