@@ -5,10 +5,6 @@ const inputArray = [...inputs];
 
 inputArr.map(field => field.addEventListener('input', checkMatch));
 
-// FOR TESTING MOBILE AUTOCOMPLETE
-const topLogo = document.getElementById("logo-top");
-// --- END TESTING MOBILE AUTOCOMPLETE
-
 document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && inputArr.map(field => field.value.length > 0)) {
       inputArr.map(field => field.value = "");
@@ -19,12 +15,11 @@ document.addEventListener("keydown", function (e) {
     }
 });
 
-
 let coinList = []; 
 let coins = [];
 let searchText = "";
 
-async function AllTokens() {
+function AllTokens() {
     loadAllCoingeckoTokens();
     loadAllCoinpaprikaTokens();
 }
@@ -92,4 +87,3 @@ async function checkMatch(e) {
         addSuggestions(matches);
     }
 }
-

@@ -34,8 +34,10 @@ or
 | Search with Enter key | :white_check_mark: |
 | Clear search entry with Esc | :white_check_mark: |
 | Add categories to result page | :white_check_mark: |
+| Make autocomplete work on mobile | :white_check_mark: |
+| Add another API to support more functionality | :white_check_mark: |
+| Display whitepaper link | :white_check_mark: |
 | Arrow keys on suggestions | :x: |
-| Suggestions don't work on mobile | :x: |
 | Random Coin Search | :x: |
 
 
