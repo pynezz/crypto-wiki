@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
         
-const {searchCoins,getTrending, getWhitepapers} = require('./public/js/api');
+const {searchCoingecko ,getTrending, searchCoinPaprika} = require('./public/js/api');
 
 app.use(express.static('public'));
 
@@ -21,9 +21,9 @@ app.get('/', (req, res) => {
 /**
  * ?id={tokenId}
  */
-app.get('/get-whitepaper*', async (req, res) => {
+app.get('/get-misc*', async (req, res) => {
     try {
-        var data = await getWhitepapers(req.query.id); 
+        var data = await searchCoinPaprika(req.query.id); 
         return res.status(200).json(data);
     } catch(err) {
         handleErr(err, res);
@@ -33,7 +33,7 @@ app.get('/get-whitepaper*', async (req, res) => {
 app.get('/search*', async (req, res) => {
     // console.log('Request params: ', req.query);
     try {
-        const data = await searchCoins(req.query.id);
+        const data = await searchCoingecko(req.query.id);
         // console.log(data);
         return res.status(200).json(data);
     } catch(err) {

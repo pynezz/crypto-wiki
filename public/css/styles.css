@@ -281,6 +281,18 @@ header {
     color: var(--text-gray);
     line-height: 10rem;
 }
+#coin-header-details {
+	display: flex;
+	flex-direction: row;
+	align-content: center;
+}
+
+#coin-header-details > h3 {
+	color: var(--text-gray);
+}
+#coin-header-details > p {
+	color: var(--text-light);
+}
 
 
 

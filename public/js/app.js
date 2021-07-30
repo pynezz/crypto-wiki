@@ -1,4 +1,5 @@
 const resultObj = document.getElementById("dis1-text");
+const headerDetails = document.getElementById("coin-header-details");
 const inputFields = document.getElementsByClassName("search");
 const inputArr = [...inputFields];
 
@@ -33,6 +34,7 @@ function getCoinInfo(coinId) {
 function addObjects(object) {
 	hashingAlgorithmHTML(object);
 	categoryHTML(object);
+	//TODO: Similar coins
 	fetchDataFromCoinpaprika(object); // This also generates all the other links
 
 	let h3Tag = document.createElement("h3");
@@ -45,8 +47,8 @@ function addObjects(object) {
 	pTag.innerHTML = object.description.en;
 	h3Tag.innerHTML = `${object.name} | ${symbol.toUpperCase()}`;
 	
-	resultObj.appendChild(h3Tag);
-	resultObj.appendChild(coinIcon);
+	headerDetails.appendChild(coinIcon);
+	headerDetails.appendChild(h3Tag);
 	resultObj.appendChild(pTag);
 
 	document.getElementById("coin-content").scrollIntoView();
@@ -110,10 +112,11 @@ async function fetchDataFromCoinpaprika(object) {
 	let whitepaperLink = {...object};
 
 	function fetchWhitepaper(coinId) {
-		let url = `/get-whitepaper?id=${coinId}`;
+		let url = `/get-misc?id=${coinId}`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => {
+				console.log(data);
 				if (data.whitepaper.link) {
 					console.log('Found whitepaper! ', data.whitepaper.link);
 					whitepaperLink.links.whitepaper = data.whitepaper.link;
@@ -124,6 +127,18 @@ async function fetchDataFromCoinpaprika(object) {
 				}
 			})
 			.catch((err) => console.log("Error getting whitepaper - app.js", err));
+	}
+
+	function fetchSimilar(coinId) {
+		let url = `/get-misc?id=${coinId}`;
+		fetch(url)
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.hasOwnProperty('')) {
+
+				}
+			})
+			.catch((err) => console.log("Error fetching similar coins - app.js", err));
 	}
 
 	await searchCoinpaprikaList(object.symbol.toUpperCase())

@@ -16,13 +16,13 @@ async function SendRequest(url,method) {
     }
 }
 
-exports.searchCoins = async (tokenId) => {
+exports.searchCoingecko = async (tokenId) => {
     const url = `https://api.coingecko.com/api/v3/coins/${tokenId}?localization=en`;
     return SendRequest(url,'GET');
 }
 
 exports.getTrending = async () => {
-    const url = 'https://api.coingecko.com/api/v3/search/trending'
+    const url = 'https://api.coingecko.com/api/v3/search/trending';
     return SendRequest(url,'GET');
 }
 /**
@@ -30,7 +30,7 @@ exports.getTrending = async () => {
  * @param {string} tokenId from coinpaprika id list
  * @returns request to coinpaprika
  */
-exports.getWhitepapers = async (tokenId) => {
+exports.searchCoinPaprika = async (tokenId) => {
     const url = `https://api.coinpaprika.com/v1/coins/${tokenId}`;
     return SendRequest(url, 'GET');
 }
