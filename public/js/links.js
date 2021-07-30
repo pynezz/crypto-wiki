@@ -1,13 +1,17 @@
-const linkList = document.getElementById("links-text");
+const linkList = document.getElementById("links-div");
 
 function fetchLinks(object) {
     let links = [];
     links = object.links;
     linkList.innerHTML = "";
-    createHTML(links);
+
+    var header = createHeader("Links");
+    linkList.appendChild(header);
+
+    createLinkHtml(links);
 }
 
-function createHTML(links) {
+function createLinkHtml(links) {
     const ulElement = document.createElement("ul");
     ulElement.setAttribute("id", "links");
 
