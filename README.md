@@ -37,6 +37,7 @@ or
 | Make autocomplete work on mobile | :white_check_mark: |
 | Add another API to support more functionality | :white_check_mark: |
 | Display whitepaper link | :white_check_mark: |
+| Add similar coins | :x: |
 | Required "Powered by:" text | :x: |
 | Arrow keys on suggestions | :x: |
 | Random Coin Search | :x: |
