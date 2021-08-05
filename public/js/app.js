@@ -18,6 +18,7 @@ function getCoinInfo(coinId) {
     removeSuggestions();
     
 	resultObj.innerHTML = "";
+	headerDetails.innerHTML = "";
 	inputArr.forEach((element) => (element.value = "")); // Removing the value after search
 
 	var url = `/search?id=${coinId}`;
